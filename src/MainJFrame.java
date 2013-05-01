@@ -31,12 +31,14 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    String currentLanguage = "ENGLISH";
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
-        getLanguages("ENGLISH");
+        getLanguages(currentLanguage);
     }
 
     /**
@@ -52,6 +54,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -64,35 +67,50 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        jButton2.setText("About");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -117,6 +135,52 @@ public class MainJFrame extends javax.swing.JFrame {
             showError(ex.toString());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(
+                null,  
+                "Author: Ionica Bizau\n" + 
+                "Github: http://github.com/IonicaBizau\n" + 
+                "Contact: bizauionica@gmail.com\n", 
+                "About",
+                JOptionPane.DEFAULT_OPTION);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    Boolean initialized = false;
+    
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+        if (!initialized) {
+            initialized = true;
+            return;
+        }
+        
+        String oldLanguage = currentLanguage;
+        currentLanguage = jComboBox1.getSelectedItem().toString();
+        
+        Translator translate = Translator.getInstance();
+        String translatedText = null;
+        
+        try {
+            try {
+                translatedText = translate.translate(
+                    jTextArea1.getText(),
+                    (String)Language.class.getField(oldLanguage).get(null),
+                    (String)Language.class.getField(currentLanguage).get(null));
+                
+            } catch (IllegalArgumentException ex) {
+                showError(ex.toString());
+            } catch (IllegalAccessException ex) {
+                showError(ex.toString());
+            }
+        } catch (NoSuchFieldException ex) {
+            showError(ex.toString());
+        } catch (SecurityException ex) {
+            showError(ex.toString());
+        }
+        
+        jTextArea1.setText(translatedText);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * Show error
@@ -191,21 +255,15 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public void ReadMessage(String message) throws IOException, JavaLayerException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException{
         Audio audio = Audio.getInstance();
-        InputStream sound = null;
         
-        String language = jComboBox1.getSelectedItem().toString();
-        
-            sound = audio.getAudio(message, (String)Language.class.getField(language).get(null));
-        
-            audio.play(sound);
-        
+        String language = jComboBox1.getSelectedItem().toString();    
+        InputStream sound = audio.getAudio(message, (String)Language.class.getField(language).get(null));
+        audio.play(sound);
     }
     
-    
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
