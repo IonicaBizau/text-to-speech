@@ -9,14 +9,9 @@
 import com.gtranslate.Audio;
 import com.gtranslate.Language;
 import com.gtranslate.Translator;
-import java.awt.Window;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
 
@@ -161,10 +156,16 @@ public class MainJFrame extends javax.swing.JFrame {
         Translator translate = Translator.getInstance();
         String translatedText = null;
         
+        // TODO Solving the problem with comma replacing it with a blank space.
+        //      https://github.com/IonicaBizau/text-to-speech/issues/1
+        //      http://code.google.com/p/java-google-translate-text-to-speech/issues/detail?id=1
+        
+        String textInserted = jTextArea1.getText().replace(",", " ");
+        
         try {
             try {
                 translatedText = translate.translate(
-                    jTextArea1.getText(),
+                    textInserted,
                     (String)Language.class.getField(oldLanguage).get(null),
                     (String)Language.class.getField(currentLanguage).get(null));
                 
