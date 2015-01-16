@@ -1,8 +1,8 @@
 /*
  * @author: Ionica Bizau
- * @project: Text to speech Java App
- * @year: 2013
- * @license: GNU
+ * @project: Text to speech
+ * @year: 2013-15
+ * @license: MIT
  */
 
 
@@ -22,7 +22,7 @@ import javazoom.jl.decoder.JavaLayerException;
 
 /**
  *
- * @author ionica
+ * @author Ionică Bizău
  */
 public class MainJFrame extends javax.swing.JFrame {
 
@@ -134,7 +134,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JOptionPane.showMessageDialog(
                 null,  
-                "Author: Ionica Bizau\n" + 
+                "Author: Ionică Bizău\n" + 
                 "Github: http://github.com/IonicaBizau\n" + 
                 "Contact: bizauionica@gmail.com\n", 
                 "About",
