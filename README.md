@@ -8,3 +8,5 @@ Java application that allows to transform a text to speech using [Google Transla
 
 If there is no error you will be able to listen the robot reading your text.
 
+## License
+See the [LICENSE](/LICENSE) file.
