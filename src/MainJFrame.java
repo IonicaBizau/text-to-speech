@@ -1,11 +1,3 @@
-/*
- * @author: Ionica Bizau
- * @project: Text to speech
- * @year: 2013-15
- * @license: MIT
- */
-
-
 import com.gtranslate.Audio;
 import com.gtranslate.Language;
 import com.gtranslate.Translator;
