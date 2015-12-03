@@ -1,0 +1,36 @@
+{
+  "name": "text-to-speech",
+  "version": "1.0.0",
+  "description": "Java application that allows to transform a text to speech using [Google Translate unofficial Java API](http://code.google.com/p/java-google-translate-text-to-speech/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IonicaBizau/text-to-speech.git"
+  },
+  "keywords": [
+    "text",
+    "speech",
+    "java"
+  ],
+  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IonicaBizau/text-to-speech/issues"
+  },
+  "homepage": "https://github.com/IonicaBizau/text-to-speech#readme",
+  "blah": {
+      "description": [
+          {
+              "ul": [
+                "Select the language from combobox.",
+                "Enter your text in that language",
+                "Click \"Read Now\" button."
+              ]
+          },
+          { "p": "If there is no error you will be able to listen the robot reading your text." }
+      ]
+  }
+}
