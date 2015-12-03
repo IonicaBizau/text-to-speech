@@ -22,15 +22,17 @@
   },
   "homepage": "https://github.com/IonicaBizau/text-to-speech#readme",
   "blah": {
-      "description": [
-          {
-              "ul": [
-                "Select the language from combobox.",
-                "Enter your text in that language",
-                "Click \"Read Now\" button."
-              ]
-          },
-          { "p": "If there is no error you will be able to listen the robot reading your text." }
-      ]
+    "description": [
+      {
+        "ul": [
+          "Select the language from combobox.",
+          "Enter your text in that language",
+          "Click \"Read Now\" button."
+        ]
+      },
+      {
+        "p": "If there is no error you will be able to listen the robot reading your text."
+      }
+    ]
   }
 }
