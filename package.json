@@ -1,6 +1,6 @@
 {
   "name": "text-to-speech",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Java application that allows to transform a text to speech using [Google Translate unofficial Java API](http://code.google.com/p/java-google-translate-text-to-speech/).",
   "main": "index.js",
   "scripts": {
