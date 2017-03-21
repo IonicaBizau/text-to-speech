@@ -1,6 +1,6 @@
 {
   "name": "text-to-speech",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Java application that allows to transform a text to speech using [Google Translate unofficial Java API](http://code.google.com/p/java-google-translate-text-to-speech/).",
   "main": "lib/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "speech",
     "java"
   ],
-  "author": "Ionică Bizău <bizauionica@gmail.com> (http://ionicabizau.net)",
+  "author": "Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/IonicaBizau/text-to-speech/issues"
@@ -39,12 +39,11 @@
     "bin/",
     "app/",
     "lib/",
-    "build/",
     "dist/",
     "src/",
+    "scripts/",
     "resources/",
     "menu/",
-    "scripts/",
     "cli.js",
     "index.js"
   ]
