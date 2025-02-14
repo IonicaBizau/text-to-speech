@@ -1,6 +1,6 @@
 {
   "name": "text-to-speech",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Java application that allows to transform a text to speech using [Google Translate unofficial Java API](http://code.google.com/p/java-google-translate-text-to-speech/).",
   "main": "lib/index.js",
   "scripts": {
@@ -46,6 +46,8 @@
     "menu/",
     "cli.js",
     "index.js",
+    "index.d.ts",
+    "package-lock.json",
     "bloggify.js",
     "bloggify.json",
     "bloggify/"
